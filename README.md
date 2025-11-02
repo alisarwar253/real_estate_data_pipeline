@@ -38,7 +38,7 @@ boto3, snowflake.connector, elasticsearch-py – Integrations
 1. Create & Configure AWS S3
 
 - Create a bucket named (for example): `real-estate-transactions-data`
-- Upload a sample CSV file to the S3 bucket to test the trigger.
+- Upload the CSV file to the S3 bucket.
 
 ---
 
