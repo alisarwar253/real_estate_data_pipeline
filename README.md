@@ -138,18 +138,41 @@ CREATE TABLE <TABLE_NAME> (
 }
 ```
 5. Deploy AWS Lambda by going to AWS Lambda console and creating a new python function. Upload the lambda_function.py file a .zip file.
-6. Attach/add the AWS built-in layer for pandas.
-7. Create a custom layer in your Lambda by going into Layers -> Create Layer. Upload the layers zip file 'lambda_all_dependencies'. Select the necessary architecture and python version.
-8. Once custom layer is created, attach/add the custom layer into your lambda function.
-9. For snowflake connection add the following environment variables with the respective values in your lambda function:
+6. Attach/add the AWS built-in layer for pandas (AWSSDKPandas-Python39).
+7. For the remaining dependencies for lambda follow the below steps.
+   Create a directory in your local PC name it wahtever you want or for example 'data_pipeline_dependecies' and inside this directory create a empty directory and name it 'python'.
+   Now open windows powershell in your 'data_pipeline_dependecies' directory.
+   Run the below command for snowflake-python-connector dependency compatible with linux:
+   ```bash
+   pip install snowflake-connector-python --target python --platform manylinux2014_x86_64 --only-binary=:all: --implementation cp --python-version 3.9 --upgrade
+   ```
+   Run the below command for exceptiongroup dependency:
+   ```bash
+   pip install exceptiongroup --target python .
+   ```
+   Run the below command for elasticsearch dependency:
+   ```bash
+   pip install elasticsearch --target python --upgrade 
+   ```
+   Run the below command for slugify dependency:
+   ```bash
+   pip install python-slugify --target python --upgrade 
+   ```
+8. Once all these commands are run, run the following commands to compress the dependencies folder into a zip file 'lambda_all_dependencies':
+   ```bash
+   Compress-Archive -Path python -DestinationPath lambda_all_dependencies.zip
+   ```
+10. Now go to your AWS lambda and create a custom layer by going into Layers -> Create Layer. Upload the layers zip file 'lambda_all_dependencies'. Select the necessary architecture and python version.
+11. Once custom layer is created, attach/add the custom layer into your lambda function.
+12. For snowflake connection add the following environment variables with the respective values in your lambda function:
    SNOWFLAKE_USER=
    SNOWFLAKE_PASSWORD=
    SNOWFLAKE_ACCOUNT=
    ELASTIC_CLOUD_ID=
    ELASTIC_PASSWORD=
-10. Add S3 trigger in your lambda function (ensure the event type selected for this should be 'All object create events'.
-11. Now deploy and test by uploading a csv file in S3 bucket and verify the results in your snowflake DWH in you respective table.
-12. Also in your ElasticSearch deployment go to Kibana and run the following to get your index data:
+13. Add S3 trigger in your lambda function (ensure the event type selected for this should be 'All object create events'.
+14. Now deploy and test by uploading a csv file in S3 bucket and verify the results in your snowflake DWH in you respective table.
+15. Also in your ElasticSearch deployment go to Kibana and run the following to get your index data:
     GET real_estate_index_map/_search?
 
 
