@@ -8,4 +8,5 @@ pandas
 numpy
 python-slugify
 snowflake-connector-python
+exceptiongroup
 elasticsearch
