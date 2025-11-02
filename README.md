@@ -140,21 +140,21 @@ CREATE TABLE <TABLE_NAME> (
 5. Deploy AWS Lambda by going to AWS Lambda console and creating a new python function. Upload the lambda_function.py file as a .zip file.
 6. Attach/add the AWS built-in layer for pandas (AWSSDKPandas-Python39).
 7. For the remaining dependencies for lambda follow the below steps:
-   Create a directory in your local PC name it wahtever you want or for example 'data_pipeline_dependecies' and inside this directory create a empty directory and name it 'python'.
-   Now open windows powershell in your 'data_pipeline_dependecies' directory.
-   Run the below command for snowflake-python-connector dependency compatible with linux:
+   - Create a directory in your local PC name it wahtever you want or for example 'data_pipeline_dependecies' and inside this directory create a empty directory and name it 'python'.
+   - Now open windows powershell in your 'data_pipeline_dependecies' directory.
+   - Run the below command for snowflake-python-connector dependency compatible with linux:
    ```bash
    pip install snowflake-connector-python --target python --platform manylinux2014_x86_64 --only-binary=:all: --implementation cp --python-version 3.9 --upgrade
    ```
-   Run the below command for exceptiongroup dependency:
+   - Run the below command for exceptiongroup dependency:
    ```bash
    pip install exceptiongroup --target python .
    ```
-   Run the below command for elasticsearch dependency:
+   - Run the below command for elasticsearch dependency:
    ```bash
    pip install elasticsearch --target python --upgrade 
    ```
-   Run the below command for slugify dependency:
+   - Run the below command for slugify dependency:
    ```bash
    pip install python-slugify --target python --upgrade 
    ```
