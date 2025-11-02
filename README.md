@@ -17,6 +17,22 @@ The Lambda function extracts the file, transforms the data, loads it into **Snow
 
 ---
 
+# Tech Stack Used
+
+AWS Lambda – Serverless execution
+
+Amazon S3 – File ingestion
+
+Snowflake – Cloud data warehouse
+
+Elasticsearch – Search & analytics
+
+Python + Pandas – ETL transformations
+
+boto3, snowflake.connector, elasticsearch-py – Integrations
+
+---
+
 ## Setup Instructions
 
 1. Create & Configure AWS S3
@@ -164,29 +180,14 @@ CREATE TABLE <TABLE_NAME> (
    ```
 10. Now go to your AWS lambda and create a custom layer by going into Layers -> Create Layer. Upload the zip file that you just created from your local PC 'lambda_all_dependencies.zip'. Select the necessary architecture and your python version.
 11. Once custom layer is created, attach/add the custom layer into your lambda function.
-12. For snowflake connection add the following environment variables with the respective values in your lambda function:
-   SNOWFLAKE_USER=
-   SNOWFLAKE_PASSWORD=
-   SNOWFLAKE_ACCOUNT=
-   ELASTIC_CLOUD_ID=
-   ELASTIC_PASSWORD=
+12. For snowflake and elasticsearch connection add the following environment variables with the respective values in your lambda function:
+   - SNOWFLAKE_USER=
+   - SNOWFLAKE_PASSWORD=
+   - SNOWFLAKE_ACCOUNT=
+   - ELASTIC_CLOUD_ID=
+   - ELASTIC_PASSWORD=
 13. Add S3 trigger in your lambda function (ensure the event type selected for this should be 'All object create events'.
 14. Now deploy and test by uploading a csv file in S3 bucket and verify the results in your snowflake DWH in you respective table.
 15. Also in your ElasticSearch deployment go to Kibana and run the following to get your index data:
-    GET real_estate_index_map/_search?
-
-
-# Tech Stack Used
-
-AWS Lambda – Serverless execution
-
-Amazon S3 – File ingestion
-
-Snowflake – Cloud data warehouse
-
-Elasticsearch – Search & analytics
-
-Python + Pandas – ETL transformations
-
-boto3, snowflake.connector, elasticsearch-py – Integrations
+    - GET real_estate_index_map/_search?
 
