@@ -1,7 +1,7 @@
 # real_estate_data_pipeline
 
 This project implements a **serverless ETL pipeline** using **AWS Lambda**, triggered automatically when a new CSV file is uploaded to an **S3 bucket**.  
-The Lambda function extracts the file, transforms the data, loads it into **Snowflake**, and indexes it in **Elasticsearch** — all dynamically.
+The Lambda function extracts the file from the S3 Bucket, transforms the data, loads it into **Snowflake**, and indexes it in **Elasticsearch** — all without any human intervention.
 
 ---
 
