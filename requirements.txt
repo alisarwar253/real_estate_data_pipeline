@@ -1,0 +1,11 @@
+#1. AWS Account
+#2. Snowflake Account
+#3. ElasticSearch Account
+#4. The following python dependencies/libraries:
+
+boto3
+pandas
+numpy
+python-slugify
+snowflake-connector-python
+elasticsearch
