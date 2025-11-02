@@ -19,17 +19,18 @@ The Lambda function extracts the file, transforms the data, loads it into **Snow
 
 ## Setup Instructions
 
-### 1️⃣ Create & Configure AWS S3
+1. Create & Configure AWS S3
 
 - Create a bucket named (for example): `real-estate-transactions-data`
 - Upload a sample CSV file to the S3 bucket to test the trigger.
 
 ---
 
-### 2️⃣ Create a Table in Snowflake
+2. Create a Table in Snowflake
 
 Run the following SQL script in your Snowflake worksheet (replace database, schema, and table names as needed):
 
+```sql
 CREATE DATABASE <DB_NAME>;
 USE DATABASE <DB_NAME>;
 CREATE SCHEMA <SCHEMA_NAME>;
@@ -81,9 +82,10 @@ CREATE TABLE <TABLE_NAME> (
     page_link STRING
 );
 
-
+```
 3. Create an ElasticSearch if you dont have any. Once created, create your deployment and create an index in the deployment called 'real_estate_index_map'. Example to create index:
-   
+
+```bash
    PUT /real_estate_index_map
 {
   "mappings": {
@@ -134,7 +136,7 @@ CREATE TABLE <TABLE_NAME> (
     }
   }
 }
-
+```
 5. Deploy AWS Lambda by going to AWS Lambda console and creating a new python function. Upload the lambda_function.py file a .zip file.
 6. Attach/add the AWS built-in layer for pandas.
 7. Create a custom layer in your Lambda by going into Layers -> Create Layer. Upload the layers zip file 'lambda_all_dependencies'. Select the necessary architecture and python version.
