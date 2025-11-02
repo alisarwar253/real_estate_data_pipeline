@@ -25,11 +25,9 @@ Amazon S3 – File ingestion
 
 Snowflake – Cloud data warehouse
 
-Elasticsearch – Search & analytics
+Elasticsearch – Index search map
 
-Python + Pandas – ETL transformations
-
-boto3, snowflake.connector, elasticsearch-py – Integrations
+Python – ETL transformations
 
 ---
 
@@ -39,6 +37,7 @@ boto3, snowflake.connector, elasticsearch-py – Integrations
 
 - Create a bucket named (for example): `real-estate-transactions-data`
 - Upload the CSV file to the S3 bucket.
+- You can get the csv file to be used from here: https://drive.google.com/file/d/1PIdfvZhyXAyKPJdKLZDOEyIvWbKziTEk/view?usp=sharing
 
 ---
 
