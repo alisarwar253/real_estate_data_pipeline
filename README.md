@@ -137,9 +137,9 @@ CREATE TABLE <TABLE_NAME> (
   }
 }
 ```
-5. Deploy AWS Lambda by going to AWS Lambda console and creating a new python function. Upload the lambda_function.py file a .zip file.
+5. Deploy AWS Lambda by going to AWS Lambda console and creating a new python function. Upload the lambda_function.py file as a .zip file.
 6. Attach/add the AWS built-in layer for pandas (AWSSDKPandas-Python39).
-7. For the remaining dependencies for lambda follow the below steps.
+7. For the remaining dependencies for lambda follow the below steps:
    Create a directory in your local PC name it wahtever you want or for example 'data_pipeline_dependecies' and inside this directory create a empty directory and name it 'python'.
    Now open windows powershell in your 'data_pipeline_dependecies' directory.
    Run the below command for snowflake-python-connector dependency compatible with linux:
@@ -162,7 +162,7 @@ CREATE TABLE <TABLE_NAME> (
    ```bash
    Compress-Archive -Path python -DestinationPath lambda_all_dependencies.zip
    ```
-10. Now go to your AWS lambda and create a custom layer by going into Layers -> Create Layer. Upload the layers zip file 'lambda_all_dependencies'. Select the necessary architecture and python version.
+10. Now go to your AWS lambda and create a custom layer by going into Layers -> Create Layer. Upload the zip file that you just created from your local PC 'lambda_all_dependencies.zip'. Select the necessary architecture and your python version.
 11. Once custom layer is created, attach/add the custom layer into your lambda function.
 12. For snowflake connection add the following environment variables with the respective values in your lambda function:
    SNOWFLAKE_USER=
